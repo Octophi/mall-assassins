@@ -1,16 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
-
-// 1. import `ChakraProvider` component for prebuilt Chakra components
-import { ChakraProvider } from '@chakra-ui/react'
-import LandingPage from './LandingPage'
+import React from 'react';
+import { ChakraProvider } from '@chakra-ui/react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import LandingPage from './components/LandingPage';
+import HostRoomDisplay from './components/HostRoomDisplay';
 
 function App() {
   return (
     <ChakraProvider>
-      <LandingPage />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" exact element={<LandingPage />} />
+          <Route path="/room/*" element={<HostRoomDisplay />} />
+        </Routes>
+      </BrowserRouter>
     </ChakraProvider>
   );
 }
 
 export default App;
+
