@@ -2,6 +2,7 @@
 
 # firebase-config.js
 /src/firebase-config.js
+/src/firebase/firebaseConfig.js
 
 # dependencies
 /node_modules
