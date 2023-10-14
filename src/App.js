@@ -10,7 +10,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" exact element={<LandingPage />} />
-          <Route path="/room/*" element={<HostRoomDisplay />} />
+          <Route path="/rooms/:roomId" element={<HostRoomDisplay />} />
         </Routes>
       </BrowserRouter>
     </ChakraProvider>

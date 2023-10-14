@@ -7,7 +7,7 @@ const HostRoomDisplay = () => {
   return (
     <div>
       <h1>Room ID: {roomId}</h1>
-      <h2>Role: Admin</h2>
+      <h2>Role: Host</h2>
     </div>
   );
 };
