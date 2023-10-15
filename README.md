@@ -1,10 +1,29 @@
-# Getting Started with Create React App
+# Getting Started with Mall Assassins
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). The backend is built on top of Firebase. This document is intended to provide you the necessary details to get the mall assassins app code on your local machine and in a state ready for you to run it, contribute your own changes to the code, and integrate those changes into the master version of the app.
 
-## Available Scripts
+## Setting Up Github for Collaboration
 
-In the project directory, you can run:
+The first step to getting started here is to set up your Github account and set up git on your local machine. 
+
+### For Git Aficionados
+If you are already familiar with Github and git workflows and are ready to get going, go ahead and fork this repository and then git clone the fork onto your local machine. Make some basic change to the code and submit a pull request (PR) against the main branch of this current repository to prove that you know how these things work. Your PR will get rejected, and once it does, go ahead and move on to the next step.
+
+### For Less Experienced Git users
+First, try to get a general overview of what git and Github are - ask the person next to you what they are and why they're useful. Make sure you understand the following terms in particular:
+- git clone
+- git pull
+- git branch
+- git add
+- git commit
+- fork
+- pull request
+- merge conflict
+Once you feel like you have a decent grasp of these ideas, go ahead and move on to the [Github setup doc]([url](https://github.com/Octophi/mall-assassins/blob/main/github-setup.md)) to actually do the setup.
+
+## Setting up npm and JavaScript 
+
+Check your work by running npm -v and node -v. If these run 
 
 ### `npm start`
 
@@ -14,57 +33,17 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Resources
 
-### `npm run build`
+Below is a list of useful tutorials if you want to familiarize yourself with the technologies used in this app. If you feel confident in your code abilities, you might just be able to get by with ChatGPT and reading existing parts of the code here. If you want more structured resources though, here's a few resoureces that you might find useful to reference.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Basic Web Development
+- [Basic blog on web dev]([url](https://www.freecodecamp.org/news/html-css-and-javascript-explained-for-beginners/))
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### React
+- [React documentation](https://reactjs.org/): Basic documentation
+- [Learn React Tutorial](https://react.dev/learn): I'd recommend you start here if you've never seen React before
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Firebase
+- [AngularFire CodeLab]([url](https://firebase.google.com/codelabs/firebase-web#0)): This is using Angular rather than React but you can get some basic ideas of how to call into Firebase from JavaScript
