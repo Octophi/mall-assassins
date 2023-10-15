@@ -1,5 +1,5 @@
 import { getDatabase, ref, set, get, push, child, update, remove } from 'firebase/database';
-import app from './firebaseConfig'
+import app from './firebaseConfig';
 
 // Get a reference to the Firebase Realtime Database
 const database = getDatabase(app);
@@ -28,3 +28,15 @@ export const deleteGame = (roomKey) => {
   const gameRef = ref(database, `activeGames/${roomKey}`);
   return remove(gameRef);
 };
+
+export const doesGameExist = async (roomKey) => {
+  try {
+    const roomRef = ref(database, `activeGames/${roomKey}`);
+    const snapshot = await get(roomRef);
+    console.log(snapshot.exists());
+    return snapshot.exists();
+  } catch (error) {
+    console.error('Error checking room:', error);
+    throw error;
+  }
+}
