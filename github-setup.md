@@ -40,13 +40,13 @@ Go back to our [main Github page](tinyurl.com/hacknew23). Click the "Fork" butto
 - Use the `git clone` command followed by the URL you copied from GitHub. For example, to clone a repository with an HTTPS URL:
 
 ```bash
-git clone https://github.com/username/repository-name.git
+git clone <insert copied URL here>
 ```
 
 Or, if you have set up SSH keys with your GitHub account, you can use the SSH URL:
 
 ```bash
-git clone git@github.com:username/repository-name.git
+git clone <insert copied URL here>
 ```
 
 If you haven't set up SSH before, go ahead and just use HTTPS, it's less setup.
