@@ -6,10 +6,14 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 The first step to getting started here is to set up your Github account and set up git on your local machine. DO NOT move on to the next section until you have created a pull request.
 
-### For Git Aficionados
+<details>
+  <summary>For Git Aficionados</summary>
+  
 If you are already familiar with Github and git workflows and are ready to get going, go ahead and fork this repository and then git clone the fork onto your local machine. Make some basic change to this README.md file and submit a pull request (PR) against the main branch of this current repository to prove that you know how these things work. Your PR will get rejected, and once it does, go ahead and move on to the section on setting up npm.
+</details>
 
-### For Less Experienced Git users
+<details>
+  <summary>For Less Experienced Git Users</summary>
 First, try to get a general overview of what git and Github are - ask the person next to you what they are and why they're useful. Make sure you understand the following terms in particular:
 - git clone
 - git pull
@@ -21,6 +25,8 @@ First, try to get a general overview of what git and Github are - ask the person
 - merge conflict
 
 Once you feel like you have a decent grasp of these ideas, go ahead and move on to the [github-setup.md](/github-setup.md) file to actually do the setup.
+</details>
+
 
 ## Setting up npm 
 
