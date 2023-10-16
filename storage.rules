@@ -1,0 +1,11 @@
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /{allPaths=**} {
+      // Allow read access to anyone without authentication.
+      allow read: if true;
+      
+      // Allow write (upload) access to anyone without authentication.
+      allow write: if true;
+    }
+  }
+}
