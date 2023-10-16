@@ -32,6 +32,7 @@ const GameMasterBoard = () => {
           <Box bg="teal.50" p={4} borderRadius="md">
             <Heading size="md">Active Tasks</Heading>
             <Text fontSize="sm">Manage game tasks here.</Text>
+            <ActiveTasks />
           </Box>
           <Box bg="teal.50" p={4} borderRadius="md">
             <Heading size="md">Task Bank</Heading>
