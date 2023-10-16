@@ -9,6 +9,7 @@ import {
   Text
 } from '@chakra-ui/react';
 import { Link, useParams } from 'react-router-dom';
+import { ActiveTasks } from '../components/gameMasterComponents/ActiveTasks.js'
 
 const GameMasterBoard = () => {
   const { roomID } = useParams();
@@ -27,7 +28,7 @@ const GameMasterBoard = () => {
         <Stack spacing={4} width="30%">
           <Box>
             <Heading size="sm">Active Tasks</Heading>
-            {/* Add task list UI components here */}
+            {<ActiveTasks />}
           </Box>
           <Box>
             <Heading size="sm">Task Bank</Heading>
