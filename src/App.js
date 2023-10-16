@@ -19,9 +19,9 @@ function App() {
           <Route path="/rooms/:roomID/game-master-info" element={<HostInputInfoPage />} />
           <Route path="/rooms/:roomID/:hostID" element={<HostWaitingRoom />} />
           <Route path="/join-room" element={<PlayerInputInfoPage />} />
-          <Route path="/rooms/:roomId/:playerName/:playerID" element={<PlayerWaitingPage />} />
-          <Route path="/rooms/:roomId/:playerName/:playerID/play" element={<PlayerMainExperiencePage />} />
-          <Route path="/rooms/:roomId/:playerName/:playerID/play/submit" element={<PlayerSubmissionPage />} />
+          <Route path="/rooms/:roomID/:playerName/:playerID" element={<PlayerWaitingPage />} />
+          <Route path="/rooms/:roomID/:playerName/:playerID/play" element={<PlayerMainExperiencePage />} />
+          <Route path="/rooms/:roomID/:playerName/:playerID/play/submit" element={<PlayerSubmissionPage />} />
           <Route path="/game-master-board" element={<GameMasterBoard />} />
         </Routes>
       </BrowserRouter>
