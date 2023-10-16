@@ -112,7 +112,7 @@ export const updateGameStatus = async (roomKey, status) => {
     const gameSnapshot = await get(gameRef);
     if(gameSnapshot.exists()) {
       const gameData = gameSnapshot.val();
-      gameData.roomStatus = "Active";
+      gameData.roomStatus = status;
       
       await update(gameRef, gameData);
     } else {
