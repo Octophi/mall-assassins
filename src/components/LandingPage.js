@@ -20,18 +20,26 @@ const LandingPage = () => {
       console.log('Room created');
 
       // Redirect to the newly created room
-      navigate(`/rooms/${roomId}`);
+      navigate(`/rooms/${roomId}/game-master`);
     } catch (error) {
       console.error('Error in creating game:', error);
     }
   };
+
+  const handleJoinGame = () => {
+    try {
+      navigate('/join-room');
+    } catch (error) {
+      console.error('Error in Attempting to Join Room:', error);
+    }
+  }
 
   return (
     <Flex direction="column" align="center" justify="center" h="100vh">
       <Heading as="h1" size="xl" mb={4}>
         Welcome to Mall Assassins!
       </Heading>
-      <Button colorScheme="blue" size="lg" mb={4}>
+      <Button colorScheme="blue" size="lg" mb={4} onClick={handleJoinGame}>
         Join a Room
       </Button>
       <Button colorScheme="green" size="lg" onClick={handleCreateGame}>
