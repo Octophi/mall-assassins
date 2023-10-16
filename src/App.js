@@ -8,6 +8,7 @@ import HostWaitingRoom from './pages/HostWaitingRoom/HostWaitingRoom';
 import HostInputInfoPage from './pages/HostInputInfoPage/HostInputInfoPage';
 import GameMasterBoard from './pages/GameMasterBoard';
 import PlayerMainExperiencePage from './pages/PlayerMainExperiencePage';
+import PlayerSubmissionPage from './pages/PlayerSubmissionPage';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/join-room" element={<PlayerInputInfoPage />} />
           <Route path="/rooms/:roomId/:playerName/:playerID" element={<PlayerWaitingPage />} />
           <Route path="/rooms/:roomId/:playerName/:playerID/play" element={<PlayerMainExperiencePage />} />
+          <Route path="/rooms/:roomId/:playerName/:playerID/play/submit" element={<PlayerSubmissionPage />} />
           <Route path="/game-master-board" element={<GameMasterBoard />} />
         </Routes>
       </BrowserRouter>
