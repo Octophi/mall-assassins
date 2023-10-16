@@ -7,9 +7,8 @@ import {
 import { useParams, useNavigate } from 'react-router-dom';
 import { countNumberOfPlayers, retrieveGameStatus } from '../../firebase/database';
 
-
 const PlayerWaitingPage = () => {
-  const { roomID } = useParams(); // Use useParams to access route parameters
+  const { roomID } = useParams();
   const { playerName } = useParams();
   const { playerID } = useParams();
   const [playerCount, setPlayerCount] = useState(0);
@@ -17,39 +16,25 @@ const PlayerWaitingPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Fetch the player count from API
-    const fetchPlayerCount = async () => {
-      try {
-        const count = await countNumberOfPlayers(roomID);
+    const fetchPlayerCount = () => {
+      countNumberOfPlayers(roomID, (count) => {
         setPlayerCount(count);
-      } catch (error) {
-        // Handle any errors
-        console.error('Error fetching player count:', error);
-      }
+      });
     };
 
+    // Immediately fetch the player count when the component loads
     fetchPlayerCount();
-  }, [roomID]);
 
-  useEffect(() => {
-    // Check if game is started
-    const fetchGameStatus = async () => {
-      try {
-        const gameStatus = await retrieveGameStatus(roomID);
-        setGameStatus(gameStatus);
+    // Set up a real-time listener for game status
+    retrieveGameStatus(roomID, (status) => {
+      setGameStatus(status);
 
-        if (gameStatus === 'Active') {
-          navigate(`/rooms/${roomID}/${playerName}/${playerID}/play`);
-        } 
-      } catch (error) {
-        // Handle any erros
-        console.error('Error fetching game status: ', error);
+      if (status === 'Active') {
+        navigate(`/rooms/${roomID}/${playerName}/${playerID}/play`);
       }
-    };
+    });
+  }, [roomID, playerName, playerID, navigate]);
 
-    fetchGameStatus();
-  }, [roomID]);
-  
   return (
     <div>
       <Flex direction="column" align="center" justify="center" h="100vh">
