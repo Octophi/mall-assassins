@@ -20,7 +20,7 @@ First, try to get a general overview of what git and Github are - ask the person
 - pull request
 - merge conflict
 
-Once you feel like you have a decent grasp of these ideas, go ahead and move on to the [Github setup doc]([url](https://github.com/Octophi/mall-assassins/blob/main/github-setup.md)) to actually do the setup.
+Once you feel like you have a decent grasp of these ideas, go ahead and move on to the [github-setup.md](/github-setup.md) file to actually do the setup.
 
 ## Setting up npm 
 
