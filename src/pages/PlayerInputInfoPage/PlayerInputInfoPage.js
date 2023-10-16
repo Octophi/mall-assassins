@@ -41,17 +41,11 @@ const PlayerInputInfoPage = () => {
           }
           // Add player, does checking already
           try {
-            const roomPlayerNames = await room.val().playerNames;
-            if(!roomPlayerNames.includes(playerName)) {
-              await addPlayer(roomID, playerName, playerID);
-              await createPlayer(playerID, playerData);
-              navigate(`/rooms/${roomID}/${playerName}/${playerID}`);
-            } else {
-              setNameTaken(true);
-            }
+            await addPlayer(roomID, playerName, playerID);
+            await createPlayer(playerID, playerData);
+            navigate(`/rooms/${roomID}/${playerName}/${playerID}`);
           } catch(error) {
-            setError(error.message);
-            setIsErrorModalOpen(true);
+            setNameTaken(true);
             console.log(error);
           }
         } else {
