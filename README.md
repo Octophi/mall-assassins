@@ -11,7 +11,7 @@ The first step to getting started here is to set up your Github account and set 
   
 If you are already familiar with Github and git workflows and are ready to get going, go ahead and fork this repository and then git clone the fork onto your local machine. Make some basic change to this README.md file and submit a pull request (PR) against the main branch of this current repository to prove that you know how these things work. Your PR will get rejected, and once it does, go ahead and move on to the section on setting up npm.
 </details>
-
+   
 <details>
   <summary>For Less Experienced Git Users</summary>
 First, try to get a general overview of what git and Github are - ask the person next to you what they are and why they're useful. Make sure you understand the following terms in particular:
