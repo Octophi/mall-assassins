@@ -40,3 +40,40 @@ export const doesGameExist = async (roomKey) => {
     throw error;
   }
 }
+
+export const addPlayer = async (roomKey, playerName, playerID) => {
+  try {
+    const gameRef = ref(database, `activeGames/${roomKey}`);
+    const gameSnapshot = await get(gameRef);
+    if(gameSnapshot.exists()) {
+      const gameData = gameSnapshot.val();
+      if(gameData.playerNames && gameData.playerNames.includes(playerName)) {
+        throw new Error("Player name already exists in the game. Please change your name.");
+      }
+
+      if(!gameData.playerIDs) {
+        gameData.playerIDs = [playerID];
+      } else {
+        gameData.playerIDs.push(playerID);
+      }
+
+      if(!gameData.playerNames) {
+        gameData.playerNames = [playerName];
+      } else {
+        gameData.playerNames.push(playerName);
+      }
+
+      await update(gameRef, gameData);
+    } else {
+      console.error('Error adding Player ID, no snapshot');
+    }
+  } catch (error) {
+    console.error('Error adding Player ID:', error);
+    throw error;
+  }
+}
+
+export const createPlayer = (playerKey, playerData) => {
+  const playerRef = ref(database, `players/${playerKey}`);
+  return set(playerRef, playerData);
+}

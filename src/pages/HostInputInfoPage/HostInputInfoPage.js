@@ -9,12 +9,13 @@ import {
   Input
  } from '@chakra-ui/react';
 import { Form, useNavigate } from 'react-router-dom';
-import { doesGameExist, getGameByRoomKey, addPlayer, createPlayer } from '../../firebase/database';
+import { doesGameExist, getGameByRoomKey, updateGame } from '../../firebase/database';
+import { useParams } from 'react-router-dom';
 
 import { v4 as uuidv4 } from 'uuid';
 
-const PlayerInputInfoPage = () => {
-  const [roomID, setRoomID] = useState('');
+const HostInputInfoPage = () => {
+  const { roomID } = useParams();
   const [playerName, setPlayerName] = useState('');
   const navigate = useNavigate();
 
@@ -28,20 +29,20 @@ const PlayerInputInfoPage = () => {
         const room = await getGameByRoomKey(roomID);
         const roomStatus = await room.val().roomStatus.trim();
         if (roomStatus.localeCompare("Waiting") === 0) {
-          const playerID = uuidv4();
+          const hostID = uuidv4();
 
           const playerData = {
-            playerId: playerID, 
+            playerId: hostID, 
             playerName: playerName,   
           }
-          // Add player, does checking already
-          try {
-            await addPlayer(roomID, playerName, playerID);
-            await createPlayer(playerID, playerData);
-            navigate(`/rooms/${roomID}/${playerName}/${playerID}`);
-          } catch(error) {
-            console.log(error);
+          //Add player to be the Host of Game in Backend
+          const gameData = {
+            hostID: hostID,
           }
+          updateGame(roomID, gameData);
+
+          // If the room ID exists, navigate to the AssassinGameLobby
+          navigate(`/rooms/${roomID}/${hostID}`);
         } else {
           console.error('Room Status is now:', roomStatus);
         }
@@ -61,16 +62,6 @@ const PlayerInputInfoPage = () => {
         </Heading>
       <form onSubmit={handleSubmit}>
         <FormControl mb={4}>
-          <FormLabel htmlFor="roomID">Enter Room ID</FormLabel>
-          <Input
-            type="text"
-            id="roomID"
-            placeholder="roomID"
-            value={roomID}
-            onChange={(e) => setRoomID(e.target.value)}
-          />
-        </FormControl>
-        <FormControl mb={4}>
           <FormLabel htmlFor="playerName">Enter Your Name</FormLabel>
           <Input
             type="text"
@@ -82,7 +73,7 @@ const PlayerInputInfoPage = () => {
         </FormControl>
         <Box textAlign="center" mb={4}>
           <Button type="submit" colorScheme="teal">
-            Join Room
+            Create Room
           </Button>
         </Box>
       </form>
@@ -91,4 +82,4 @@ const PlayerInputInfoPage = () => {
   );
 };
 
-export default PlayerInputInfoPage;
+export default HostInputInfoPage;
