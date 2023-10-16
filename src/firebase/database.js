@@ -77,3 +77,8 @@ export const createPlayer = (playerKey, playerData) => {
   const playerRef = ref(database, `players/${playerKey}`);
   return set(playerRef, playerData);
 }
+
+// export const getTask = () => {
+//   const taskRef = ref(database, `activeTasks/${taskID}`);
+//   return get(taskRef);
+// };
