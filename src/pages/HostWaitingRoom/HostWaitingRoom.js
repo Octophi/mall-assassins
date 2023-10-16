@@ -1,9 +1,10 @@
 import React from 'react';
 import {
   Flex,
-  Heading
+  Heading, 
+  Button
 } from '@chakra-ui/react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 const HostWaitingRoom = () => {
   const { roomID } = useParams(); // Use useParams to access route parameters
@@ -17,6 +18,11 @@ const HostWaitingRoom = () => {
         <Heading as="h2" size="xl" mb={4}>
           Role: Host
         </Heading>
+        <Link to="/game-master-board">
+          <Button colorScheme="teal">
+            Game Master Board
+          </Button>
+        </Link>
       </Flex>
     </div>
   );
