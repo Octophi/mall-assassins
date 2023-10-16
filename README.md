@@ -201,4 +201,3 @@ Below is a list of useful tutorials if you want to familiarize yourself with the
 
 ### Firebase
 - [AngularFire CodeLab]([url](https://firebase.google.com/codelabs/firebase-web#0)): This is using Angular rather than React but you can get some basic ideas of how to call into Firebase from JavaScript
-
