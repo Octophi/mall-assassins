@@ -1,6 +1,6 @@
 # Getting Started with Mall Assassins
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). The backend is built on top of Firebase. This document is intended to provide you the necessary details to get the mall assassins app code on your local machine and in a state ready for you to run it, contribute your own changes to the code, and integrate those changes into the main version of the app.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). The backend is built on top of Firebase. This document is intended to provide you the necessary details to get the mall assassins app code on your local machine and in a state ready for you to run it, contribute your own changes to the code, and integrate those changes into the main version of the app. 
 
 ## Setting Up Github for Collaboration
 
@@ -101,34 +101,24 @@ That's it! You've successfully installed NVM, Node.js, and npm on your macOS usi
   <summary>Windows Users</summary>
 
 
-  
-1. **Open PowerShell**:
 
-   Search for "PowerShell" in the Windows Start menu and open it.
+1. **Download and Run the NVM Setup Script**:
 
-2. **Download and Run the NVM Setup Script**:
+   Go to https://github.com/coreybutler/nvm-windows#readme and click "Download Now" in the README. Open the downloaded file to start the Setup wizard. 
 
-   In the PowerShell window, run the following command to download and execute the NVM setup script using `curl`:
-
-   ```powershell
-   iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/coreybutler/nvm/v1.1.7/nvm.ps1'))
-   ```
-
-   This command downloads the NVM setup script and executes it.
-
-3. **Follow the Installation Wizard**:
+2. **Follow the Installation Wizard**:
 
    The NVM for Windows Setup wizard will appear. Follow the on-screen instructions to complete the installation. This typically involves agreeing to the license terms, choosing an installation directory, and confirming the installation.
 
-4. **Finish the Installation**:
+3. **Finish the Installation**:
 
    After the installation is complete, you will see a confirmation screen. Click "Finish" to exit the installer.
 
-5. **Open a New PowerShell Window**:
+4. **Open a New PowerShell Window**:
 
    To start using NVM, you need to open a new PowerShell window. You can do this by searching for "PowerShell" in the Windows Start menu and opening the application.
 
-6. **Verify NVM Installation**:
+5. **Verify NVM Installation**:
 
    In the new PowerShell window, you can verify that NVM is installed by running the following command:
 
@@ -138,7 +128,7 @@ That's it! You've successfully installed NVM, Node.js, and npm on your macOS usi
 
    This should display the version of NVM that you installed.
 
-7. **Install Node.js**:
+6. **Install Node.js**:
 
    To install a specific version of Node.js, you can use NVM. For example, to install the latest LTS (Long-Term Support) version of Node.js, run:
 
