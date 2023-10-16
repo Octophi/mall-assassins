@@ -175,6 +175,15 @@ Ok, you're almost ready to write code! At this point, you should have npm instal
 
 If you made it this far, congratulations, you have made it through the setup and are ready to start coding! At this point, check in with the lead of your team on what you can start working on.
 
+## Setting Up Firebase Emulator
+
+You will eventually want to write backend code, including server-side code. For this, you'll want to use Firebase Emulator to test your code locally so you don't have to deploy things directly to production and you can instantly see the effects of the changes you are doing. The setup for this is relatively minimal:
+
+1. Install Firebase CLI. ```npm install -g firebase-tools```
+2. To start the emulator, run ```firebase emulators:start```
+
+Note: You need a version of Java at least as new as Java 11 in order to run the emulator.
+
 ## Resources
 
 Below is a list of useful tutorials if you want to familiarize yourself with the technologies used in this app. 
