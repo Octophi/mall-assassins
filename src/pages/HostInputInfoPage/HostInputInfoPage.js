@@ -11,12 +11,16 @@ import {
 import { Form, useNavigate } from 'react-router-dom';
 import { doesGameExist, getGameByRoomKey, updateGame } from '../../firebase/database';
 import { useParams } from 'react-router-dom';
+import { ErrorModal } from '../../components/ErrorModal';
 
 import { v4 as uuidv4 } from 'uuid';
+import { set } from '@firebase/database';
 
 const HostInputInfoPage = () => {
   const { roomID } = useParams();
   const [playerName, setPlayerName] = useState('');
+  const [error, setError] = useState('');
+  const [isErrorModalOpen, setIsErrorModalOpen] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -44,12 +48,18 @@ const HostInputInfoPage = () => {
           // If the room ID exists, navigate to the AssassinGameLobby
           navigate(`/rooms/${roomID}/${hostID}`);
         } else {
+          setError('Room Status is now:' + roomStatus);
+          setIsErrorModalOpen(true);
           console.error('Room Status is now:', roomStatus);
         }
       } else {
+        setError('Room Not Found');
+        setIsErrorModalOpen(true);
         console.error('Room Not Found');
       }
     } catch (error) {
+      setError('Error Checking Room: ' + error.message);
+      setIsErrorModalOpen(true);
       console.error("Error Checking Room:", error);
     }
   };

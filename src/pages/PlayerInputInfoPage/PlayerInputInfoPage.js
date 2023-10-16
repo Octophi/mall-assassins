@@ -6,16 +6,21 @@ import {
   Heading,
   FormControl,
   FormLabel,
-  Input
+  Input,
+  Text
  } from '@chakra-ui/react';
 import { Form, useNavigate } from 'react-router-dom';
 import { doesGameExist, getGameByRoomKey, addPlayer, createPlayer } from '../../firebase/database';
+import ErrorModal from '../../components/ErrorModal';
 
 import { v4 as uuidv4 } from 'uuid';
 
 const PlayerInputInfoPage = () => {
   const [roomID, setRoomID] = useState('');
   const [playerName, setPlayerName] = useState('');
+  const [error, setError] = useState('');
+  const [isErrorModalOpen, setIsErrorModalOpen] = useState('');
+  const [nameTaken, setNameTaken] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -36,19 +41,32 @@ const PlayerInputInfoPage = () => {
           }
           // Add player, does checking already
           try {
-            await addPlayer(roomID, playerName, playerID);
-            await createPlayer(playerID, playerData);
-            navigate(`/rooms/${roomID}/${playerName}/${playerID}`);
+            const roomPlayerNames = await room.val().playerNames;
+            if(!roomPlayerNames.includes(playerName)) {
+              await addPlayer(roomID, playerName, playerID);
+              await createPlayer(playerID, playerData);
+              navigate(`/rooms/${roomID}/${playerName}/${playerID}`);
+            } else {
+              setNameTaken(true);
+            }
           } catch(error) {
+            setError(error.message);
+            setIsErrorModalOpen(true);
             console.log(error);
           }
         } else {
+          setError('Room Status is now: ' + roomStatus);
+          setIsErrorModalOpen(true);
           console.error('Room Status is now:', roomStatus);
         }
       } else {
+        setError('Room not found');
+        setIsErrorModalOpen(true);
         console.error('Room Not Found');
       }
     } catch (error) {
+      setError('Error Checking Room: ' + error.message);
+      setIsErrorModalOpen(true);
       console.error("Error Checking Room:", error);
     }
   };
@@ -77,9 +95,15 @@ const PlayerInputInfoPage = () => {
             id="playerName"
             placeholder="Name"
             value={playerName}
-            onChange={(e) => setPlayerName(e.target.value)}
+            onChange={(e) => {
+              setPlayerName(e.target.value);
+              setNameTaken(false);
+            }}
           />
         </FormControl>
+        {nameTaken && (
+            <Text color="red">Name is already taken</Text>
+        )}
         <Box textAlign="center" mb={4}>
           <Button type="submit" colorScheme="teal">
             Join Room
@@ -87,6 +111,11 @@ const PlayerInputInfoPage = () => {
         </Box>
       </form>
       </Flex>
+      <ErrorModal
+        isOpen={isErrorModalOpen}
+        onClose={() => setIsErrorModalOpen(false)}
+        error={error}
+      />
     </div>
   );
 };
