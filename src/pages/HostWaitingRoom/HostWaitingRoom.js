@@ -11,7 +11,7 @@ import {
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { getGameByRoomKey } from '../../firebase/database';
 
-const LobbyPage = () => {
+const HostWaitingRoom = () => {
   const { roomID } = useParams();
   const [roomData, setRoomData] = useState(null);
   const navigate = useNavigate();
@@ -78,7 +78,7 @@ const LobbyPage = () => {
   );
 };
 
-export default LobbyPage;
+export default HostWaitingRoom;
 
 
 

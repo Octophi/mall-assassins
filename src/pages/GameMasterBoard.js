@@ -67,5 +67,3 @@ const GameMasterBoard = () => {
 };
 
 export default GameMasterBoard;
-
-
