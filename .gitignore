@@ -4,6 +4,10 @@
 /src/firebase-config.js
 /src/firebase/firebaseConfig.js
 
+# log files
+database-debug.log
+firebase-debug.log
+
 # dependencies
 /node_modules
 /.pnp
