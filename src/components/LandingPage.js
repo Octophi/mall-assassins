@@ -11,7 +11,10 @@ const LandingPage = () => {
     const roomId = generateRoomKey();
     const gameData = {
       roomId,
-      active: true,
+      roomStatus: "Waiting",
+      hostID: null,
+      playerIDs: [],
+      playerNames: [],
     };
 
     try {
@@ -20,7 +23,7 @@ const LandingPage = () => {
       console.log('Room created');
 
       // Redirect to the newly created room
-      navigate(`/rooms/${roomId}/game-master`);
+      navigate(`/rooms/${roomId}/game-master-info`);
     } catch (error) {
       console.error('Error in creating game:', error);
     }
