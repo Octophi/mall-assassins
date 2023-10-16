@@ -104,7 +104,7 @@ That's it! You've successfully installed NVM, Node.js, and npm on your macOS usi
 
 1. **Download and Run the NVM Setup Script**:
 
-   Go to https://github.com/coreybutler/nvm-windows#readme and click "Download Now" in the README. Open the downloaded file to start the Setup wizard. 
+   Go to https://github.com/coreybutler/nvm-windows#readme and click "Download Now" in the README. Click on the .exe file to install. Open the downloaded file to start the Setup wizard. 
 
 2. **Follow the Installation Wizard**:
 
