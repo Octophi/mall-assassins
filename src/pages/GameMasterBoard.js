@@ -12,6 +12,7 @@ import {
   Divider,
 } from '@chakra-ui/react';
 import { Link, useParams } from 'react-router-dom';
+import PlayerList from '../components/gameMasterComponents/PlayerList';
 
 const GameMasterBoard = () => {
   const { roomID } = useParams();
