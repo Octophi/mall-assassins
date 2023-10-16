@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { ref } from '../../firebase/firebaseConfig.js'; 
+import { createTask } from '../../firebase/database.js'; 
 import { useHistory } from 'react-router-dom';
 
 import {
@@ -32,12 +32,13 @@ function CreateTask() {
     });
   };
   
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-  
-    const tasksRef = ref('tasksobj'); // Update to your Realtime Database path
-  
-    tasksRef.push(formData).then(() => {
+    console.log("Here");
+    
+    try {
+      await createTask(formData.id, formData);
+
       console.log('Data has been successfully pushed to the Realtime Database.');
   
       // Reset the form data to its initial values
@@ -49,11 +50,10 @@ function CreateTask() {
         points: '',
         status: 'incomplete',
       });
-    }).catch((error) => {
+    } catch(error) {
       console.error('Error pushing data to the Realtime Database:', error);
-    });
+    }
   };
-  
   
 
   return (
