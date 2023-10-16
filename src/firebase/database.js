@@ -128,3 +128,8 @@ export const createPlayer = (playerKey, playerData) => {
   const playerRef = ref(database, `players/${playerKey}`);
   return set(playerRef, playerData);
 }
+
+export const createTask = (taskKey, taskData) => {
+  const taskRef = ref(database, `tasks/${taskKey}`);
+  return set(taskRef, taskData);
+}
