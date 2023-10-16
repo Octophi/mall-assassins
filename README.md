@@ -27,6 +27,13 @@ First, try to get a general overview of what git and Github are - ask the person
 Once you feel like you have a decent grasp of these ideas, go ahead and move on to the [github-setup.md](/github-setup.md) file to actually do the setup.
 </details>
 
+After finishing the steps in the section above, make sure you also set up this repository as a remote branch so that you can pull the latest changes to the app at all times. To set this repository as a remote branch, run
+
+```git remote add upstream git@github.com:Octophi/mall-assassins.git```
+
+Then in the future, any time you want to get the latest changes from this repository, run 
+
+```git pull upstream main```
 
 ## Setting up npm 
 
