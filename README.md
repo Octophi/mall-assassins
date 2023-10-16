@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Setting Up Github for Collaboration
 
-The first step to getting started here is to set up your Github account and set up git on your local machine. 
+The first step to getting started here is to set up your Github account and set up git on your local machine. DO NOT move on to the next section until you have created a pull request.
 
 ### For Git Aficionados
 If you are already familiar with Github and git workflows and are ready to get going, go ahead and fork this repository and then git clone the fork onto your local machine. Make some basic change to this README.md file and submit a pull request (PR) against the main branch of this current repository to prove that you know how these things work. Your PR will get rejected, and once it does, go ahead and move on to the section on setting up npm.
@@ -26,7 +26,7 @@ Once you feel like you have a decent grasp of these ideas, go ahead and move on 
 
 Our project is built in JavaScript using a lot of framework code and special packages and so on. Thankfully, you don't have to go through and download all the individual packages and things that you need in order to get this package to run - that's the beauty of npm. npm (Node Package Manager) is a package manager for JavaScript, widely used for managing and sharing open-source JavaScript libraries and tools. It is often used in web development to install, manage, and distribute packages, which are code modules or libraries that can be used in JavaScript applications (such as ours). To get started on this project, the only thing you need to do is install npm and run the appropriate commands to get your project setup.
 
-We recommend using a Node version manager in order to install Node and npm. This should make your life easier in the long run. You can read a bit more about it from [this doc](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm), but our tl;dr instructions are below:
+We recommend using a Node version manager in order to install Node and npm. This should make your life easier in the long run. Follow our tl;dr instructions below:
 
 <details>
   <summary>Mac Users</summary>
