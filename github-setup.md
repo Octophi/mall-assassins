@@ -49,7 +49,7 @@ Or, if you have set up SSH keys with your GitHub account, you can use the SSH UR
 git clone <insert copied URL here>
 ```
 
-If you haven't set up SSH before, go ahead and just use HTTPS, it's less setup.
+If you haven't set up SSH before, go ahead and just use HTTPS, it's more through the GUI. You will need to follow the steps at [set up a personal access token]([url](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#keeping-your-personal-access-tokens-secure)) however, and whenever you push later you will need to use this personal access token.
 
 - Git will download the repository to your local machine.
 
