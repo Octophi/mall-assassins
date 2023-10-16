@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Flex,
   Heading,
@@ -16,9 +16,22 @@ import { Link, useParams } from 'react-router-dom';
 const GameMasterBoard = () => {
   const { roomID } = useParams();
 
+  const [alivePlayers, setAlivePlayers] = useState([
+    'Player 1',
+    'Player 2',
+    'Player 3',
+  ]);
+  const [deadPlayers, setDeadPlayers] = useState([]);
+
+  // Function to move a player from the alive list to the dead list
+  const movePlayerToDead = (playerName) => {
+    setAlivePlayers(alivePlayers.filter((player) => player !== playerName));
+    setDeadPlayers([...deadPlayers, playerName]);
+  };
+
   return (
     <Flex direction="column" p={5}>
-      <Flex justify="space-between" alignItems="center" mb={5}>
+      <Flex justify="space between" alignItems="center" mb={5}>
         <Heading size="lg">Mall Assassins</Heading>
         <Flex alignItems="center">
           <Input placeholder="Enter URL" size="sm" maxWidth="300px" mr={2} />
@@ -57,9 +70,18 @@ const GameMasterBoard = () => {
           </Box>
 
           <Flex direction="column">
-            <PlayerList title="Alive Players (5)" playerCount={5} taskCount={1} />
+            <PlayerList
+              title={`Alive Players (${alivePlayers.length})`}
+              players={alivePlayers}
+              taskCount={1}
+              onPlayerDeath={movePlayerToDead}
+            />
             <Divider mt={3} />
-            <PlayerList title="Dead Players (12)" playerCount={12} taskCount={1} />
+            <PlayerList
+              title={`Dead Players (${deadPlayers.length})`}
+              players={deadPlayers}
+              taskCount={1}
+            />
           </Flex>
         </Flex>
       </Flex>
@@ -67,12 +89,23 @@ const GameMasterBoard = () => {
   );
 };
 
-const PlayerList = ({ title, playerCount, taskCount }) => (
+const PlayerList = ({ title, players, taskCount, onPlayerDeath }) => (
   <Box bg="gray.100" p={4} borderRadius="md" mb={3}>
     <Heading size="md">{title}</Heading>
-    <Text fontSize="sm" mt={2}>
-      {playerCount === 1 ? '• 1 Player' : `• ${playerCount} Players`}
-    </Text>
+    {players.map((player, index) => (
+      <Flex key={index} justify="space-between" mt={2}>
+        <Text fontSize="sm">{player}</Text>
+        {onPlayerDeath && (
+          <Button
+            colorScheme="red"
+            size="sm"
+            onClick={() => onPlayerDeath(player)}
+          >
+            Kill
+          </Button>
+        )}
+      </Flex>
+    ))}
   </Box>
 );
 
