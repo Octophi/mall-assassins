@@ -6,6 +6,7 @@ import PlayerInputInfoPage from './pages/PlayerInputInfoPage';
 import PlayerWaitingPage from './pages/PlayerWaitingPage';
 import HostWaitingRoom from './pages/HostWaitingRoom';
 import HostInputInfoPage from './pages/HostInputInfoPage/HostInputInfoPage';
+import GameMasterBoard from './pages/GameMasterBoard';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/rooms/:roomID/:hostID" element={<HostWaitingRoom />} />
           <Route path="/join-room" element={<PlayerInputInfoPage />} />
           <Route path="/rooms/:roomId/:playerName/:playerID" element={<PlayerWaitingPage />} />
+          <Route path="/game-master-board" element={<GameMasterBoard />} />
         </Routes>
       </BrowserRouter>
     </ChakraProvider>
