@@ -3,7 +3,7 @@ import { initializeApp } from "firebase/app";
 const firebaseConfig = {
     apiKey: "AIzaSyByi96ZlDi4S8MhxxzZBiYNBOYl8bLVrq0",
     authDomain: "mallassassins.firebaseapp.com",
-    databaseURL: "https://mallassassins-default-rtdb.firebaseio.com",
+    databaseURL: "http://localhost:4000/database/mallassassins/data",
     projectId: "mallassassins",
     storageBucket: "mallassassins.appspot.com",
     messagingSenderId: "132794183326",
