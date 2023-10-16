@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Flex,
   Heading,
@@ -12,10 +12,22 @@ import {
   Divider,
 } from '@chakra-ui/react';
 import { Link, useParams } from 'react-router-dom';
-import PlayerList from '../components/gameMasterComponents/PlayerList';
 
 const GameMasterBoard = () => {
   const { roomID } = useParams();
+
+  const [alivePlayers, setAlivePlayers] = useState([
+    'Player 1',
+    'Player 2',
+    'Player 3',
+  ]);
+  const [deadPlayers, setDeadPlayers] = useState([]);
+
+  // Function to move a player from the alive list to the dead list
+  const movePlayerToDead = (playerName) => {
+    setAlivePlayers(alivePlayers.filter((player) => player !== playerName));
+    setDeadPlayers([...deadPlayers, playerName]);
+  };
 
   return (
     <Flex direction="column" p={5}>
@@ -43,7 +55,7 @@ const GameMasterBoard = () => {
 
         <Flex direction="column" width="65%" ml={6}>
           <Box bg="gray.100" p={4} borderRadius="md" mb={5}>
-            <Heading size="md">Game Title</Heading>
+            <Heading size="md">Mall Assassins</Heading>
             <Text fontSize="sm" mt={4}>
               Manage your game title and image here.
             </Text>
@@ -58,14 +70,43 @@ const GameMasterBoard = () => {
           </Box>
 
           <Flex direction="column">
-            <PlayerList title="Alive Players (5)" playerCount={5} taskCount={1} />
+            <PlayerList
+              title={`Alive Players (${alivePlayers.length})`}
+              players={alivePlayers}
+              taskCount={1}
+              onPlayerDeath={movePlayerToDead}
+            />
             <Divider mt={3} />
-            <PlayerList title="Dead Players (12)" playerCount={12} taskCount={1} />
+            <PlayerList
+              title={`Dead Players (${deadPlayers.length})`}
+              players={deadPlayers}
+              taskCount={1}
+            />
           </Flex>
         </Flex>
       </Flex>
     </Flex>
   );
 };
+
+const PlayerList = ({ title, players, taskCount, onPlayerDeath }) => (
+  <Box bg="gray.100" p={4} borderRadius="md" mb={3}>
+    <Heading size="md">{title}</Heading>
+    {players.map((player, index) => (
+      <Flex key={index} justify="space-between" mt={2}>
+        <Text fontSize="sm">{player}</Text>
+        {onPlayerDeath && (
+          <Button
+            colorScheme="red"
+            size="sm"
+            onClick={() => onPlayerDeath(player)}
+          >
+            Kill
+          </Button>
+        )}
+      </Flex>
+    ))}
+  </Box>
+);
 
 export default GameMasterBoard;

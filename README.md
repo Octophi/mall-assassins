@@ -11,7 +11,7 @@ The first step to getting started here is to set up your Github account and set 
   
 If you are already familiar with Github and git workflows and are ready to get going, go ahead and fork this repository and then git clone the fork onto your local machine. Make some basic change to this README.md file and submit a pull request (PR) against the main branch of this current repository to prove that you know how these things work. Your PR will get rejected, and once it does, go ahead and move on to the section on setting up npm.
 </details>
-
+   
 <details>
   <summary>For Less Experienced Git Users</summary>
 First, try to get a general overview of what git and Github are - ask the person next to you what they are and why they're useful. Make sure you understand the following terms in particular:
@@ -174,6 +174,15 @@ Ok, you're almost ready to write code! At this point, you should have npm instal
 4. **Profit**. At this stage, you can make changes to the code and it will dynamically update your local server so you can see changes you're making to the app in real time. 
 
 If you made it this far, congratulations, you have made it through the setup and are ready to start coding! At this point, check in with the lead of your team on what you can start working on.
+
+## Setting Up Firebase Emulator
+
+You will eventually want to write backend code, including server-side code. For this, you'll want to use Firebase Emulator to test your code locally so you don't have to deploy things directly to production and you can instantly see the effects of the changes you are doing. The setup for this is relatively minimal:
+
+1. Install Firebase CLI. ```npm install -g firebase-tools```
+2. To start the emulator, run ```firebase emulators:start```
+
+Note: You need a version of Java at least as new as Java 11 in order to run the emulator.
 
 ## Resources
 

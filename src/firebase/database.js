@@ -73,6 +73,57 @@ export const addPlayer = async (roomKey, playerName, playerID) => {
   }
 }
 
+export const countNumberOfPlayers = async (roomKey) => {
+  const gameRef = ref(database, `/activeGames/${roomKey}`);
+  try {
+    const gameSnapshot = await get(gameRef);
+    if(gameSnapshot.exists()) {
+      const gameData = gameSnapshot.val();
+      const players = gameData.playerIDs;
+      const count = players ? Object.keys(players).length : 0;
+      return count;
+    }
+    return 0;
+  } catch (error) {
+    console.error('Error Fetching Game Snapshot: ', error);
+    throw error;
+  }
+}
+
+export const retrieveGameStatus = async (roomKey) => {
+  const gameRef = ref(database, `/activeGames/${roomKey}`);
+  try {
+    const gameSnapshot = await get(gameRef);
+    if(gameSnapshot.exists()) {
+      const gameData = gameSnapshot.val();
+      return gameData.roomStatus;
+    } else {
+      console.error('Game Snapshot do not exist');
+    }
+  } catch (error) {
+    console.error('Error Fetching Game Snapshot: ', error);
+    throw error;
+  }
+}
+
+export const updateGameStatus = async (roomKey, status) => {
+  try {
+    const gameRef = ref(database, `/activeGames/${roomKey}`);
+    const gameSnapshot = await get(gameRef);
+    if(gameSnapshot.exists()) {
+      const gameData = gameSnapshot.val();
+      gameData.roomStatus = status;
+      
+      await update(gameRef, gameData);
+    } else {
+      console.error('Game Snapshot do not exist');
+    }
+  } catch (error) {
+    console.error('Error Fetching Game Snapshot: ', error);
+    throw error;
+  }
+}
+
 export const createPlayer = (playerKey, playerData) => {
   const playerRef = ref(database, `players/${playerKey}`);
   return set(playerRef, playerData);
