@@ -1,6 +1,6 @@
 # Getting Started with Mall Assassins
 
- This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). The backend is built on top of Firebase. This document is intended to provide you the necessary details to get the mall assassins app code on your local machine and in a state ready for you to run it, contribute your own changes to the code, and integrate those changes into the main version of the app. 
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). The backend is built on top of Firebase. This document is intended to provide you the necessary details to get the mall assassins app code on your local machine and in a state ready for you to run it, contribute your own changes to the code, and integrate those changes into the main version of the app. 
 
 ## Setting Up Github for Collaboration
 

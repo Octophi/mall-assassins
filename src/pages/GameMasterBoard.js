@@ -12,7 +12,6 @@ import {
   Divider,
 } from '@chakra-ui/react';
 import { Link, useParams } from 'react-router-dom';
-import PlayerList from '../components/gameMasterComponents/PlayerList';
 
 const GameMasterBoard = () => {
   const { roomID } = useParams();
@@ -32,7 +31,7 @@ const GameMasterBoard = () => {
 
   return (
     <Flex direction="column" p={5}>
-      <Flex justify="space between" alignItems="center" mb={5}>
+      <Flex justify="space-between" alignItems="center" mb={5}>
         <Heading size="lg">Mall Assassins</Heading>
         <Flex alignItems="center">
           <Input placeholder="Enter URL" size="sm" maxWidth="300px" mr={2} />
@@ -56,7 +55,7 @@ const GameMasterBoard = () => {
 
         <Flex direction="column" width="65%" ml={6}>
           <Box bg="gray.100" p={4} borderRadius="md" mb={5}>
-            <Heading size="md">Game Title</Heading>
+            <Heading size="md">Mall Assassins</Heading>
             <Text fontSize="sm" mt={4}>
               Manage your game title and image here.
             </Text>
