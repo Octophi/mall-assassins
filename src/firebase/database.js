@@ -127,32 +127,32 @@ export const createTask = (taskKey, taskData) => {
 }
 
 // Takes in a boolean argument
-export const getPlayersByAliveStatus = (isAlive) => {
+export const getPlayersByAliveStatus = async (isAlive) => {
   // Create a reference to the "players" node
   const playersRef = ref(database, "players");
 
   // Create a query to filter players where "isAlive" is true
   const alivePlayersQuery = query(playersRef, orderByChild("isAlive"), equalTo(isAlive));
 
-  // Retrieve the data based on the query
-  get(alivePlayersQuery)
-    .then((snapshot) => {
-      if (snapshot.exists()) {
-        // Access the list of alive players
-        const alivePlayers = [];
-        snapshot.forEach((childSnapshot) => {
-          // Access the key (player ID) and data for each player
-          const playerId = childSnapshot.key;
-          const playerData = childSnapshot.val();
-          alivePlayers.push({ id: playerId, ...playerData });
-        });
+  try {
+    const snapshot = await get(alivePlayersQuery);
 
-        console.log("Alive players:", alivePlayers);
-      } else {
-        console.log("No alive players found.");
-      }
-    })
-    .catch((error) => {
-      console.error("Error getting data:", error);
-    });
+    if (snapshot.exists()) {
+      const alivePlayers = [];
+      snapshot.forEach((childSnapshot) => {
+        const playerId = childSnapshot.key;
+        const playerData = childSnapshot.val();
+        alivePlayers.push({ id: playerId, ...playerData });
+      });
+
+      console.log("Alive players: ", alivePlayers);
+
+      return alivePlayers; // Return the list of alive players
+    } else {
+      console.log(`No ${(isAlive) ? "alive" : "dead" } players found.`);
+      return null; // No players found
+    }
+  } catch (error) {
+    throw error;
+  }
 }

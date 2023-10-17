@@ -1,6 +1,12 @@
 {
   "rules": {
     ".read": true,
-    ".write": true
+    ".write": true,
+    "players": {
+      ".indexOn": ["isAlive"], 
+      "$player_id": {
+        ".validate": "newData.child('isAlive').val() == true || newData.child('isAlive').val() == false"
+      }
+    }
   }
 }
