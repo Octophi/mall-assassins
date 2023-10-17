@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import {
   Flex,
   Heading,
-  Text
+  Text, 
+  Image
 } from '@chakra-ui/react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { countNumberOfPlayers, retrieveGameStatus } from '../../firebase/database';
@@ -38,6 +39,7 @@ const PlayerWaitingPage = () => {
   return (
     <div>
       <Flex direction="column" align="center" justify="center" h="100vh">
+        
         <Heading as="h1" size="xl" mb={4}>
           Room ID: {roomID}
         </Heading>
