@@ -12,6 +12,7 @@ import {
   Spacer,
   Divider,
   AvatarGroup,
+  Image
 } from '@chakra-ui/react';
 import { Link, useParams } from 'react-router-dom';
 import PlayerList from '../components/gameMasterComponents/PlayerList';
@@ -35,16 +36,11 @@ const GameMasterBoard = () => {
   return (
     <Flex direction="column" p={5}>
       <Flex justify="space-between" alignItems="center" mb={5}>
-        <Heading size="lg">Mall Assassins </Heading>
-        <Flex alignItems="center">
-          <Input placeholder="Enter URL" size="sm" maxWidth="300px" mr={2} />
-          <Link to="/">
-            <Button colorScheme="red">
-              End the Game
-            </Button>
-          </Link>
-        </Flex>
+      <Image src="/logo.png" alt="Mall Assassins Logo" boxSize="50px" objectFit="contain" />
+      <Flex alignItems="center">
+        <Button colorScheme="red">End Game</Button>
       </Flex>
+    </Flex>
 
       <Flex>
         <Box flex={1} p={4}>

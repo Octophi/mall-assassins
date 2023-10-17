@@ -6,7 +6,8 @@ import {
   Heading,
   FormControl,
   FormLabel,
-  Input
+  Input, 
+  Image
  } from '@chakra-ui/react';
 import { Form, useNavigate } from 'react-router-dom';
 import { doesGameExist, getGameByRoomKey, updateGame } from '../../firebase/database';
@@ -67,6 +68,9 @@ const HostInputInfoPage = () => {
   return (
     <div>
       <Flex direction="column" align="center" justify="center" h="100vh">
+      <Flex justify="space-between" alignItems="center" mb={5}>
+      <Image src="/logo.png" alt="Mall Assassins Logo" boxSize="50px" objectFit="contain" />
+    </Flex>
         <Heading as="h1" size="xl" mb={4}>
           Information
         </Heading>
