@@ -14,6 +14,7 @@ import { getGameByRoomKey, retrieveAllPlayers, updateGameStatus } from '../../fi
 
 const HostWaitingRoom = () => {
   const { roomID } = useParams();
+  const { hostID } = useParams();
   const [roomData, setRoomData] = useState(null);
   const [players, setPlayers] = useState([]);
   const navigate = useNavigate();
@@ -30,7 +31,7 @@ const HostWaitingRoom = () => {
 
   const handleStartGame = () => {
     updateGameStatus(roomID, "Active");
-    navigate(`/game-master-board`);
+    navigate(`/rooms/${roomID}/${hostID}/game-master-board`);
   };
 
   return (

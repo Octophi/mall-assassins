@@ -3,10 +3,11 @@ import {
   Flex,
   Heading,
   Text, 
-  Image
+  Image, 
+  Button
 } from '@chakra-ui/react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { countNumberOfPlayers, retrieveGameStatus } from '../../firebase/database';
+import { countNumberOfPlayers, retrieveGameStatus, leaveRoom } from '../../firebase/database';
 
 const PlayerWaitingPage = () => {
   const { roomID } = useParams();
@@ -36,10 +37,25 @@ const PlayerWaitingPage = () => {
     });
   }, [roomID, playerName, playerID, navigate]);
 
+  const handleLeaveRoom = async () => {
+    await leaveRoom(roomID, playerID);
+    navigate('/');
+  }
+
   return (
-    <div>
+    <Flex direction="column" p={5}>
+<Flex justify="space-between" alignItems="center">
+      <Image src="/logo.png" alt="Mall Assassins Logo" boxSize="50px" objectFit="contain" />
+      <Flex alignItems="center">
+        <Button colorScheme="red"
+        onClick={() => handleLeaveRoom()}
+        >
+          Exit Room
+        </Button>
+      </Flex>
+    </Flex>
       <Flex direction="column" align="center" justify="center" h="100vh">
-        
+      
         <Heading as="h1" size="xl" mb={4}>
           Room ID: {roomID}
         </Heading>
@@ -53,7 +69,7 @@ const PlayerWaitingPage = () => {
           Number of Players in the Lobby: {playerCount}
         </Text>
       </Flex>
-    </div>
+    </Flex>
   );
 };
 

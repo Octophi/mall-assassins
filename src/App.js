@@ -22,7 +22,7 @@ function App() {
           <Route path="/rooms/:roomID/:playerName/:playerID" element={<PlayerWaitingPage />} />
           <Route path="/rooms/:roomID/:playerName/:playerID/play" element={<PlayerMainExperiencePage />} />
           <Route path="/rooms/:roomID/:playerName/:playerID/play/submit" element={<PlayerSubmissionPage />} />
-          <Route path="/game-master-board" element={<GameMasterBoard />} />
+          <Route path="/rooms/:roomID/:hostID/game-master-board" element={<GameMasterBoard />} />
         </Routes>
       </BrowserRouter>
     </ChakraProvider>
