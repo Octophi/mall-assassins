@@ -11,6 +11,7 @@ import {
   Avatar,
   Spacer,
   Divider,
+  AvatarGroup,
 } from '@chakra-ui/react';
 import { Link, useParams } from 'react-router-dom';
 
@@ -24,8 +25,8 @@ const GameMasterBoard = () => {
   ]);
   const [deadPlayers, setDeadPlayers] = useState([]);
 
-  // Function to move a player from the alive list to the dead list
-  const movePlayerToDead = (playerName) => {
+  // Function to eliminate a player from the game
+  const eliminatePlayer = (playerName) => {
     setAlivePlayers(alivePlayers.filter((player) => player !== playerName));
     setDeadPlayers([...deadPlayers, playerName]);
   };
@@ -33,18 +34,22 @@ const GameMasterBoard = () => {
   return (
     <Flex direction="column" p={5}>
       <Flex justify="space-between" alignItems="center" mb={5}>
-        <Heading size="lg">Mall Assassins</Heading>
+        <Heading size="lg">Mall Assassins </Heading>
         <Flex alignItems="center">
           <Input placeholder="Enter URL" size="sm" maxWidth="300px" mr={2} />
-          <Button colorScheme="red">End Game</Button>
+          <Link to="/">
+            <Button colorScheme="red">
+              End the Game
+            </Button>
+          </Link>
         </Flex>
       </Flex>
 
       <Flex>
         <Stack spacing={4} width="30%">
           <Box bg="teal.50" p={4} borderRadius="md">
-            <Heading size="md">Active Tasks</Heading>
-            <Text fontSize="sm">Manage game tasks here.</Text>
+            <Heading size="md">Active Missions</Heading>
+            <Text fontSize="sm">Strategize and manage your covert missions.</Text>
           </Box>
           <Box bg="teal.50" p={4} borderRadius="md">
             <Heading size="sm">Task Bank</Heading>
@@ -56,32 +61,32 @@ const GameMasterBoard = () => {
 
         <Flex direction="column" width="65%" ml={6}>
           <Box bg="gray.100" p={4} borderRadius="md" mb={5}>
-            <Heading size="md">Mall Assassins</Heading>
+            <Heading size="md">Mall Assassins Command Center</Heading>
             <Text fontSize="sm" mt={4}>
-              Manage your game title and image here.
+              Manage the title and visuals of your top-secret mission.
             </Text>
             <Flex mt={4}>
               <Button colorScheme="red" size="sm" mr={2}>
-                Deny
+                Abort
               </Button>
               <Button colorScheme="green" size="sm">
-                Approve
+                Execute
               </Button>
             </Flex>
           </Box>
 
           <Flex direction="column">
             <PlayerList
-              title={`Alive Players (${alivePlayers.length})`}
+              title={`Operatives in Play (${alivePlayers.length})`}
               players={alivePlayers}
-              taskCount={1}
-              onPlayerDeath={movePlayerToDead}
+              missionCount={1}
+              onEliminatePlayer={eliminatePlayer}
             />
             <Divider mt={3} />
             <PlayerList
-              title={`Dead Players (${deadPlayers.length})`}
+              title={`Operatives Eliminated (${deadPlayers.length})`}
               players={deadPlayers}
-              taskCount={1}
+              missionCount={1}
             />
           </Flex>
         </Flex>
@@ -90,19 +95,24 @@ const GameMasterBoard = () => {
   );
 };
 
-const PlayerList = ({ title, players, taskCount, onPlayerDeath }) => (
+const PlayerList = ({ title, players, missionCount, onEliminatePlayer }) => (
   <Box bg="gray.100" p={4} borderRadius="md" mb={3}>
     <Heading size="md">{title}</Heading>
+    <AvatarGroup size="md" max={4}>
+      {players.map((player, index) => (
+        <Avatar key={index} name={player} src="#" />
+      ))}
+    </AvatarGroup>
     {players.map((player, index) => (
       <Flex key={index} justify="space-between" mt={2}>
         <Text fontSize="sm">{player}</Text>
-        {onPlayerDeath && (
+        {onEliminatePlayer && (
           <Button
             colorScheme="red"
             size="sm"
-            onClick={() => onPlayerDeath(player)}
+            onClick={() => onEliminatePlayer(player)}
           >
-            Kill
+            Eliminate
           </Button>
         )}
       </Flex>
