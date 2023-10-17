@@ -1,22 +1,16 @@
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { createTask } from '../../firebase/database.js'; 
-import { useHistory } from 'react-router-dom';
-
+import { createTask } from '../../firebase/database.js';
 import {
-    Flex,
-Heading,
-    Button,
-    Box,
-    Input,
-    Stack,
-    Text
-  } from '@chakra-ui/react';
-  import { Link, useParams } from 'react-router-dom';
+  Button,
+  Input,
+  Select,
+} from '@chakra-ui/react';
+import { Link, useParams } from 'react-router-dom';
 
 function CreateTask() {
   const [formData, setFormData] = useState({
-    id: uuidv4(),    
+    id: uuidv4(),
     title: '',
     description: '',
     audience: '',
@@ -31,16 +25,15 @@ function CreateTask() {
       [name]: value,
     });
   };
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Here");
-    
+
     try {
       await createTask(formData.id, formData);
 
       console.log('Data has been successfully pushed to the Realtime Database.');
-  
+
       // Reset the form data to its initial values
       setFormData({
         id: uuidv4(),
@@ -50,91 +43,77 @@ function CreateTask() {
         points: '',
         status: 'incomplete',
       });
-    } catch(error) {
+    } catch (error) {
       console.error('Error pushing data to the Realtime Database:', error);
     }
   };
-  
+
+  // Define options for the dropdown select
+  const audienceOptions = ['Dead', 'Alive'];
 
   return (
     <div>
-      <h1>My React Form</h1>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="id">ID:</label>
-          <input
-            type="text"
-            id="id"
-            name="id"
-            value={formData.id}
-            readOnly // Mark the 'id' input as read-only since it's generated
-          />
-        </div>
-
-        <div>
-          <label htmlFor="title">Title:</label>
-          <input
+          <label htmlFor="title" >Task Title:</label>
+          <Input
             type="text"
             id="title"
             name="title"
             value={formData.title}
             onChange={handleInputChange}
+            borderColor="blue.300" 
           />
         </div>
 
         <div>
           <label htmlFor="description">Description:</label>
-          <input
+          <Input
             type="text"
             id="description"
             name="description"
             value={formData.description}
             onChange={handleInputChange}
+            borderColor="blue.300" // Add a border color
           />
         </div>
 
         <div>
           <label htmlFor="audience">Audience:</label>
-          <input
-            type="text"
+          <Select
             id="audience"
             name="audience"
             value={formData.audience}
             onChange={handleInputChange}
-          />
+          >
+            {audienceOptions.map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </Select>
         </div>
 
         <div>
           <label htmlFor="points">Points:</label>
-          <input
-            type="text"
+          <Input
+            type="number"
             id="points"
             name="points"
+            min="1"
+            max="1000"
             value={formData.points}
             onChange={handleInputChange}
-          />
-        </div>
-
-        <div>
-          <label htmlFor="status">Status:</label>
-          <input
-            type="text"
-            id="status"
-            name="status"
-            value={formData.status}
-            onChange={handleInputChange}
-            style={{
-                borderColor: "red", // Set border color to red
-                color: "red", // Set text color to red
-              }}
+            borderColor="blue.300" // Add a border color
           />
         </div>
 
         <Button
           type="submit"
-          colorScheme="blue" // Set the button color scheme
-          size="md" // Set the button size (sm, md, lg)
-          borderRadius="md" // Set the border radius
+          colorScheme="blue"
+          size="md"
+          borderRadius="md"
+          mt={5}
         >
           Submit
         </Button>

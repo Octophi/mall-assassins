@@ -47,7 +47,7 @@ const GameMasterBoard = () => {
             <Text fontSize="sm">Manage game tasks here.</Text>
           </Box>
           <Box bg="teal.50" p={4} borderRadius="md">
-            <Heading size="sm">Task Bank</Heading>
+            <Heading size="sm" >Task Bank </Heading>
             <CreateTask />
             {/* <Button as={Link} to="/tasks" colorScheme="teal" size="sm">Back To Tasks</Button> */}
             {/* Add task bank UI components here */}
