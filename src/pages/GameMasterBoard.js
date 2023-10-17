@@ -12,6 +12,7 @@ import {
   Spacer,
   Divider,
   AvatarGroup,
+  Image
 } from '@chakra-ui/react';
 import { Link, useParams } from 'react-router-dom';
 
