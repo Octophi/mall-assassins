@@ -47,20 +47,22 @@ const GameMasterBoard = () => {
       </Flex>
 
       <Flex>
-        <Stack spacing={4} width="30%">
-          <Box bg="teal.50" p={4} borderRadius="md">
-            <Heading size="md">Active Missions</Heading>
-            <Text fontSize="sm">Strategize and manage your covert missions.</Text>
-          </Box>
-          <Box bg="teal.50" p={4} borderRadius="md">
-            <Heading size="sm" >Task Bank </Heading>
-            <CreateTask />
-            {/* <Button as={Link} to="/tasks" colorScheme="teal" size="sm">Back To Tasks</Button> */}
-            {/* Add task bank UI components here */}
-          </Box>
-        </Stack>
+        <Box flex={1} p={4}>
+          <Stack spacing={4}>
+            <Box bg="teal.50" p={4} borderRadius="md">
+              <Heading size="md">Active Missions</Heading>
+              <Text fontSize="sm">Strategize and manage your covert missions.</Text>
+            </Box>
+            <Box bg="teal.50" p={4} borderRadius="md">
+              <Heading size="sm" >Task Bank </Heading>
+              <CreateTask />
+              {/* <Button as={Link} to="/tasks" colorScheme="teal" size="sm">Back To Tasks</Button> */}
+              {/* Add task bank UI components here */}
+            </Box>
+          </Stack>
+        </Box>
 
-        <Flex direction="column" width="65%" ml={6}>
+        <Box flex={1.5} p={4}>
           <Box bg="gray.100" p={4} borderRadius="md" mb={5}>
             <Heading size="md">Mall Assassins Command Center</Heading>
             <Text fontSize="sm" mt={4}>
@@ -75,8 +77,9 @@ const GameMasterBoard = () => {
               </Button>
             </Flex>
           </Box>
+        </Box>
 
-          <Flex direction="column">
+        <Box flex={1} p={4}>
             <PlayerList
               title={`Operatives in Play (${alivePlayers.length})`}
               players={alivePlayers}
@@ -89,8 +92,7 @@ const GameMasterBoard = () => {
               players={deadPlayers}
               missionCount={1}
             />
-          </Flex>
-        </Flex>
+        </Box>
       </Flex>
     </Flex>
   );
