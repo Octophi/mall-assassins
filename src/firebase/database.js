@@ -1,4 +1,4 @@
-import { getDatabase, ref, set, get, push, child, update, remove, onValue } from 'firebase/database';
+import { getDatabase, ref, set, get, push, child, update, remove, onValue, updateDoc } from 'firebase/database';
 import app from './firebaseConfig';
 
 // Get a reference to the Firebase Realtime Database
@@ -164,3 +164,29 @@ export const retrieveAllTasks = (roomKey, callback) => {
     callback(gameStatus);
   });
 };
+
+export const leaveRoom = async (roomKey, playerID) => {
+  try {
+    const playerRef = ref(database, `players/${playerID}`);
+    const playerSnapshot = await get(playerRef);
+    const gameRef = ref(database, `activeGames/${roomKey}`);
+    const gameSnapshot = await get(gameRef);
+    
+    if (playerSnapshot.exists() && gameSnapshot.exists()) {
+      const playerData = playerSnapshot.val();
+      const playerName = playerData.playerName;
+      const gameData = gameSnapshot.val();
+      const updatedPlayerIDs = gameData.playerIDs.filter((id) => id !== playerID);
+      const updatedPlayerNames = gameData.playerNames.filter((name) => name !== playerName);
+      gameData.playerIDs = updatedPlayerIDs;
+      gameData.playerNames = updatedPlayerNames;
+      await update(gameRef, gameData);
+      await remove(playerRef, playerData);
+    } else {
+      console.error("Player doesn't exist.");
+    }
+  } catch (error) {
+    console.error('Error removing Player: ', error);
+    throw error;
+  }
+}
