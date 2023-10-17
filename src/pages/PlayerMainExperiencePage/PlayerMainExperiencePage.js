@@ -67,7 +67,7 @@ const PlayerMainExperiencePage = () => {
         </div>
         <div className="bottom-target-cards">
           <ObjectiveCard isTask={false} fullWidth={false} bgColor="green.100" title="Isaiah Bernardino" content={'Points: ' + 260} handleOnClick={handleButtonClick} />
-          <ObjectiveCard isTask={false} fullWidth={false} bgColor="yellow.100" title="EJ Robinson" content={'Points: ' + 200} handleOnClick={handleButtonClick} />
+          <ObjectiveCard isTask={false} fullWidth={false} bgColor="yellow.100" title="EJ Robinson" content={'Points: ' + 20git0} handleOnClick={handleButtonClick} />
         </div>
       </Box>
         <BasicModal modalHeader="Isaiah's Glorious Work" modalBody="Great Work Isaiah"/>
