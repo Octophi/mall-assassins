@@ -6,13 +6,15 @@ import {
   Text,
   Stack,
   Box,
-  Center
+  Center, 
+  Image
 } from '@chakra-ui/react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { getGameByRoomKey, retrieveAllPlayers, updateGameStatus } from '../../firebase/database';
 
 const HostWaitingRoom = () => {
   const { roomID } = useParams();
+  const { hostID } = useParams();
   const [roomData, setRoomData] = useState(null);
   const [players, setPlayers] = useState([]);
   const navigate = useNavigate();
@@ -29,13 +31,15 @@ const HostWaitingRoom = () => {
 
   const handleStartGame = () => {
     updateGameStatus(roomID, "Active");
-    navigate(`/game-master-board`);
+    navigate(`/rooms/${roomID}/${hostID}/game-master-board`);
   };
 
   return (
     <Flex direction="column" p={5}>
       <Flex justify="space-between" alignItems="center" mb={5}>
-        <Heading size="md">Mall Assassins Logo</Heading>
+      <Flex justify="space-between" alignItems="center" mb={5}>
+      <Image src="/logo.png" alt="Mall Assassins Logo" boxSize="50px" objectFit="contain" />
+    </Flex>
         <Flex>
           <Button colorScheme="green" onClick={handleStartGame}>
             Start Game

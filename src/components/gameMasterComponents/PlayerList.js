@@ -1,12 +1,23 @@
 import React from 'react';
-import { Box, Heading, Text } from '@chakra-ui/react';
+import { Box, Heading, Text, Flex, Button } from '@chakra-ui/react';
 
-const PlayerList = ({ title, playerCount }) => (
+const PlayerList = ({ title, players, taskCount, onPlayerDeath }) => (
   <Box bg="gray.100" p={4} borderRadius="md" mb={3}>
     <Heading size="md">{title}</Heading>
-    <Text fontSize="sm" mt={2}>
-      {playerCount === 1 ? '• 1 Player' : `• ${playerCount} Players`}
-    </Text>
+    {players.map((player, index) => (
+      <Flex key={index} justify="space-between" mt={2}>
+        <Text fontSize="sm">{player}</Text>
+        {onPlayerDeath && (
+          <Button
+            colorScheme="red"
+            size="sm"
+            onClick={() => onPlayerDeath(player)}
+          >
+            Kill
+          </Button>
+        )}
+      </Flex>
+    ))}
   </Box>
 );
 
