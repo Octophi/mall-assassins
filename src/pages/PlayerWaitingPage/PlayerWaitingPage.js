@@ -1,15 +1,40 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 import {
   Flex,
-  Heading
+  Heading,
+  Text
 } from '@chakra-ui/react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
+import { countNumberOfPlayers, retrieveGameStatus } from '../../firebase/database';
 
 const PlayerWaitingPage = () => {
-  const { roomID } = useParams(); // Use useParams to access route parameters
+  const { roomID } = useParams();
   const { playerName } = useParams();
-  //TODO: Add more info, show players in lobby
-  
+  const { playerID } = useParams();
+  const [playerCount, setPlayerCount] = useState(0);
+  const [gameStatus, setGameStatus] = useState('');
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchPlayerCount = () => {
+      countNumberOfPlayers(roomID, (count) => {
+        setPlayerCount(count);
+      });
+    };
+
+    // Immediately fetch the player count when the component loads
+    fetchPlayerCount();
+
+    // Set up a real-time listener for game status
+    retrieveGameStatus(roomID, (status) => {
+      setGameStatus(status);
+
+      if (status === 'Active') {
+        navigate(`/rooms/${roomID}/${playerName}/${playerID}/play`);
+      }
+    });
+  }, [roomID, playerName, playerID, navigate]);
+
   return (
     <div>
       <Flex direction="column" align="center" justify="center" h="100vh">
@@ -22,6 +47,9 @@ const PlayerWaitingPage = () => {
         <Heading as="h2" size="xl" mb={4}>
           Player Name: { playerName }
         </Heading>
+        <Text>
+          Number of Players in the Lobby: {playerCount}
+        </Text>
       </Flex>
     </div>
   );

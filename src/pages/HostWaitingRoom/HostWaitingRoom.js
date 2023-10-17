@@ -9,7 +9,7 @@ import {
   Center
 } from '@chakra-ui/react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
-import { getGameByRoomKey } from '../../firebase/database';
+import { getGameByRoomKey, updateGameStatus } from '../../firebase/database';
 
 const HostWaitingRoom = () => {
   const { roomID } = useParams();
@@ -34,6 +34,7 @@ const HostWaitingRoom = () => {
   }, [roomID]);
 
   const handleStartGame = () => {
+    updateGameStatus(roomID, "Active");
     navigate(`/game-master-board`);
   };
 
