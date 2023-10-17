@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './PlayerMainExperience.css';
-import { useNavigate, useLocation, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Box, Flex, Alert, AlertIcon } from '@chakra-ui/react'
 import TargetCard from '../../components/TargetCard/TargetCard.js';
 import { useAppContext } from '../../AppContext';
+import BasicModal from '../../components/PopUp/PopUp';
 
 const TaskCard = ({ title, description, navigate, roomId, playerName, playerId }) => {
 
@@ -78,6 +79,7 @@ const PlayerMainExperiencePage = () => {
           <TargetCard title="Target 2" content="Content for Target 2" handleOnClick={handleButtonClick} />
         </div>
       </Box>
+        <BasicModal modalHeader="Isaiah's Glorious Work" modalBody="Great Work Isaiah"/>
     </Flex>
   );
 };
