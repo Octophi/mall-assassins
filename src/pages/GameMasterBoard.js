@@ -15,6 +15,7 @@ import {
   Image
 } from '@chakra-ui/react';
 import { Link, useParams } from 'react-router-dom';
+import PlayerList from '../components/gameMasterComponents/PlayerList';
 
 const GameMasterBoard = () => {
   const { roomID } = useParams();
@@ -90,30 +91,5 @@ const GameMasterBoard = () => {
     </Flex>
   );
 };
-
-const PlayerList = ({ title, players, missionCount, onEliminatePlayer }) => (
-  <Box bg="gray.100" p={4} borderRadius="md" mb={3}>
-    <Heading size="md">{title}</Heading>
-    <AvatarGroup size="md" max={4}>
-      {players.map((player, index) => (
-        <Avatar key={index} name={player} src="#" />
-      ))}
-    </AvatarGroup>
-    {players.map((player, index) => (
-      <Flex key={index} justify="space-between" mt={2}>
-        <Text fontSize="sm">{player}</Text>
-        {onEliminatePlayer && (
-          <Button
-            colorScheme="red"
-            size="sm"
-            onClick={() => onEliminatePlayer(player)}
-          >
-            Eliminate
-          </Button>
-        )}
-      </Flex>
-    ))}
-  </Box>
-);
 
 export default GameMasterBoard;
