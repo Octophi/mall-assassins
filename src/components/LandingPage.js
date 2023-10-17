@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Flex, Heading } from '@chakra-ui/react';
+import { Button, Flex, Heading, Image } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom'; // Import the useNavigate hook for navigation
 import generateRoomKey from '../utils/gameUtils';
 import { createGame } from '../firebase/database';
@@ -39,6 +39,9 @@ const LandingPage = () => {
 
   return (
     <Flex direction="column" align="center" justify="center" h="100vh">
+      <Flex justify="space-between" alignItems="center" mb={5}>
+      <Image src="/logo.png" alt="Mall Assassins Logo" boxSize="50px" objectFit="contain" />
+    </Flex>
       <Heading as="h1" size="xl" mb={4}>
         Welcome to Mall Assassins!
       </Heading>

@@ -10,7 +10,7 @@ import {
   Text,
   Avatar,
   Spacer,
-  Divider,
+  Divider, Image
 } from '@chakra-ui/react';
 import { Link, useParams } from 'react-router-dom';
 
@@ -33,12 +33,11 @@ const GameMasterBoard = () => {
   return (
     <Flex direction="column" p={5}>
       <Flex justify="space-between" alignItems="center" mb={5}>
-        <Heading size="lg">Mall Assassins</Heading>
-        <Flex alignItems="center">
-          <Input placeholder="Enter URL" size="sm" maxWidth="300px" mr={2} />
-          <Button colorScheme="red">End Game</Button>
-        </Flex>
+      <Image src="/logo.png" alt="Mall Assassins Logo" boxSize="50px" objectFit="contain" />
+      <Flex alignItems="center">
+        <Button colorScheme="red">End Game</Button>
       </Flex>
+    </Flex>
 
       <Flex>
         <Stack spacing={4} width="30%">
