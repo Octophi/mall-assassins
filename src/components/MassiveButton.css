@@ -1,0 +1,13 @@
+.massive-button {
+    width: 100%;
+      padding: 10px 20px; /* Adjust the padding as needed */
+      font-size: 24px; /* Adjust the font size as needed */
+      background-color: #3498db; /* Set your desired button color */
+      color: #ffffff; /* Set the text color */
+      border: none; /* Remove default border */
+      cursor: pointer;
+    }
+    
+    .massive-button:hover {
+      background-color: #2980b9; /* Change color on hover if desired */
+    }

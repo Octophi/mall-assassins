@@ -1,0 +1,30 @@
+/* TaskCardFormat.css */
+
+.task-card-container {
+    width: 100%;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .task-card-button {
+    width: 100%;
+    padding: 8px 16px;
+    font-size: 16px;
+    background-color: #3498db;
+    color: #ffffff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+  
+  .task-details-modal {
+    margin-top: 10px;
+  }
+  
+  .task-details-modal h2, .task-details-modal h3, .task-details-modal p {
+    margin: 5px 0;
+  }
+  
