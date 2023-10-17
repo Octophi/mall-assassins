@@ -77,16 +77,11 @@ const GameMasterBoard = () => {
 
         <Box flex={1} p={4}>
             <PlayerList
-              title={`Operatives in Play (${alivePlayers.length})`}
-              players={alivePlayers}
-              missionCount={1}
-              onEliminatePlayer={eliminatePlayer}
+              isAlive={true}
             />
             <Divider mt={3} />
             <PlayerList
-              title={`Operatives Eliminated (${deadPlayers.length})`}
-              players={deadPlayers}
-              missionCount={1}
+              isAlive={false}
             />
         </Box>
       </Flex>

@@ -37,7 +37,8 @@ const PlayerInputInfoPage = () => {
 
           const playerData = {
             playerId: playerID, 
-            playerName: playerName,   
+            playerName: playerName,
+            isAlive: true   
           }
           // Add player, does checking already
           try {

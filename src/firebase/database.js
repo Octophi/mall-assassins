@@ -1,4 +1,4 @@
-import { getDatabase, ref, set, get, push, child, update, remove, onValue } from 'firebase/database';
+import { getDatabase, ref, set, get, push, child, update, remove, onValue, query, orderByChild, equalTo } from 'firebase/database';
 import app from './firebaseConfig';
 
 // Get a reference to the Firebase Realtime Database
@@ -124,4 +124,35 @@ export const createPlayer = (playerKey, playerData) => {
 export const createTask = (taskKey, taskData) => {
   const taskRef = ref(database, `tasks/${taskKey}`);
   return set(taskRef, taskData);
+}
+
+// Takes in a boolean argument
+export const getPlayersByAliveStatus = (isAlive) => {
+  // Create a reference to the "players" node
+  const playersRef = ref(database, "players");
+
+  // Create a query to filter players where "isAlive" is true
+  const alivePlayersQuery = query(playersRef, orderByChild("isAlive"), equalTo(isAlive));
+
+  // Retrieve the data based on the query
+  get(alivePlayersQuery)
+    .then((snapshot) => {
+      if (snapshot.exists()) {
+        // Access the list of alive players
+        const alivePlayers = [];
+        snapshot.forEach((childSnapshot) => {
+          // Access the key (player ID) and data for each player
+          const playerId = childSnapshot.key;
+          const playerData = childSnapshot.val();
+          alivePlayers.push({ id: playerId, ...playerData });
+        });
+
+        console.log("Alive players:", alivePlayers);
+      } else {
+        console.log("No alive players found.");
+      }
+    })
+    .catch((error) => {
+      console.error("Error getting data:", error);
+    });
 }
