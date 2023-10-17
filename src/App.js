@@ -1,5 +1,6 @@
 import React from 'react';
 import { ChakraProvider } from '@chakra-ui/react';
+import { AppProvider } from './AppContext';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LandingPage from './components/LandingPage';
 import PlayerInputInfoPage from './pages/PlayerInputInfoPage';
@@ -13,18 +14,20 @@ import PlayerSubmissionPage from './pages/PlayerSubmissionPage/PlayerSubmissionP
 function App() {
   return (
     <ChakraProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/rooms/:roomID/game-master-info" element={<HostInputInfoPage />} />
-          <Route path="/rooms/:roomID/:hostID" element={<HostWaitingRoom />} />
-          <Route path="/join-room" element={<PlayerInputInfoPage />} />
-          <Route path="/rooms/:roomID/:playerName/:playerID" element={<PlayerWaitingPage />} />
-          <Route path="/rooms/:roomID/:playerName/:playerID/play" element={<PlayerMainExperiencePage />} />
-          <Route path="/rooms/:roomID/:playerName/:playerID/play/submit" element={<PlayerSubmissionPage />} />
-          <Route path="/game-master-board" element={<GameMasterBoard />} />
-        </Routes>
-      </BrowserRouter>
+      <AppProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/rooms/:roomID/game-master-info" element={<HostInputInfoPage />} />
+            <Route path="/rooms/:roomID/:hostID" element={<HostWaitingRoom />} />
+            <Route path="/join-room" element={<PlayerInputInfoPage />} />
+            <Route path="/rooms/:roomID/:playerName/:playerID" element={<PlayerWaitingPage />} />
+            <Route path="/rooms/:roomID/:playerName/:playerID/play" element={<PlayerMainExperiencePage />} />
+            <Route path="/rooms/:roomID/:playerName/:playerID/play/submit" element={<PlayerSubmissionPage />} />
+            <Route path="/game-master-board" element={<GameMasterBoard />} />
+          </Routes>
+        </BrowserRouter>
+      </AppProvider>
     </ChakraProvider>
   );
 }
