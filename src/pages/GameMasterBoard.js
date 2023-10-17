@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import CreateTask from '../components/gameMasterComponents/CreateTask';
 import {
   Flex,
   Heading,
@@ -51,10 +52,10 @@ const GameMasterBoard = () => {
             <Text fontSize="sm">Strategize and manage your covert missions.</Text>
           </Box>
           <Box bg="teal.50" p={4} borderRadius="md">
-            <Heading size="md">Mission Headquarters</Heading>
-            <Button as={Link} to="/tasks" colorScheme="teal" size="sm">
-              Back To HQ
-            </Button>
+            <Heading size="sm">Task Bank</Heading>
+            <CreateTask />
+            {/* <Button as={Link} to="/tasks" colorScheme="teal" size="sm">Back To Tasks</Button> */}
+            {/* Add task bank UI components here */}
           </Box>
         </Stack>
 
