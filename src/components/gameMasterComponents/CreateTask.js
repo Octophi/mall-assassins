@@ -1,14 +1,21 @@
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { createTask } from '../../firebase/database.js';
+import { createTask, addTask } from '../../firebase/database.js'; 
+import { useHistory } from 'react-router-dom';
+
 import {
-  Button,
-  Input,
-  Select,
-} from '@chakra-ui/react';
-import { Link, useParams } from 'react-router-dom';
+    Flex,
+    Heading,
+    Button,
+    Box,
+    Input,
+    Stack,
+    Text, Select
+  } from '@chakra-ui/react';
+  import { Link, useParams } from 'react-router-dom';
 
 function CreateTask() {
+  const { roomID } = useParams();
   const [formData, setFormData] = useState({
     id: uuidv4(),
     title: '',
@@ -31,6 +38,7 @@ function CreateTask() {
 
     try {
       await createTask(formData.id, formData);
+      await addTask(roomID, formData.title, formData.points);
 
       console.log('Data has been successfully pushed to the Realtime Database.');
 

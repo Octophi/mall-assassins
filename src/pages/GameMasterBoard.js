@@ -15,6 +15,7 @@ import {
   Image
 } from '@chakra-ui/react';
 import { Link, useParams } from 'react-router-dom';
+import { ActiveTasks } from '../components/gameMasterComponents/ActiveTasks.js'
 import PlayerList from '../components/gameMasterComponents/PlayerList';
 
 const GameMasterBoard = () => {
@@ -47,7 +48,7 @@ const GameMasterBoard = () => {
           <Stack spacing={4}>
             <Box bg="teal.50" p={4} borderRadius="md">
               <Heading size="md">Active Missions</Heading>
-              <Text fontSize="sm">Strategize and manage your covert missions.</Text>
+              <ActiveTasks />
             </Box>
             <Box bg="teal.50" p={4} borderRadius="md">
               <Heading size="sm" >Task Bank </Heading>
