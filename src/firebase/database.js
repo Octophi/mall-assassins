@@ -100,7 +100,7 @@ export const updateGameStatus = async (roomKey, status) => {
       
       await update(gameRef, gameData);
     } else {
-      console.error('Game Snapshot do not exist');
+      console.error('Game Snapshot does not exist');
     }
   } catch (error) {
     console.error('Error Fetching Game Snapshot: ', error);
@@ -121,12 +121,46 @@ export const createPlayer = (playerKey, playerData) => {
   return set(playerRef, playerData);
 }
 
-// export const getTask = () => {
-//   const taskRef = ref(database, `activeTasks/${taskID}`);
-//   return get(taskRef);
-// };
+
 
 export const createTask = (taskKey, taskData) => {
   const taskRef = ref(database, `tasks/${taskKey}`);
   return set(taskRef, taskData);
 }
+
+export const addTask = async (roomKey, title, points) => {
+  try {
+    const gameRef = ref(database, `activeGames/${roomKey}`);
+    const gameSnapshot = await get(gameRef);
+    if(gameSnapshot.exists()) {
+      const gameData = gameSnapshot.val();
+
+      if(!gameData.taskTitles) {
+        gameData.taskTitles = [title];
+      } else {
+        gameData.taskTitles.push(title);
+      }
+
+      if(!gameData.taskPoints) {
+        gameData.taskPoints = [points];
+      } else {
+        gameData.taskPoints.push(points);
+      }
+
+      await update(gameRef, gameData);
+    } else {
+      console.error('Error adding task, no snapshot');
+    }
+  } catch (error) {
+    console.error('Error adding task:', error);
+    throw error;
+  }
+}
+
+export const retrieveAllTasks = (roomKey, callback) => {
+  const gameRef = ref(database, `/activeGames/${roomKey}/tasks`);
+  onValue(gameRef, (snapshot) => {
+    const gameStatus = snapshot.val();
+    callback(gameStatus);
+  });
+};
