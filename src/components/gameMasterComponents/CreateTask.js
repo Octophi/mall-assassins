@@ -10,7 +10,7 @@ import {
     Box,
     Input,
     Stack,
-    Text
+    Text, Select
   } from '@chakra-ui/react';
   import { Link, useParams } from 'react-router-dom';
 

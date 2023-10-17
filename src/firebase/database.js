@@ -158,7 +158,7 @@ export const addTask = async (roomKey, title, points) => {
 }
 
 export const retrieveAllTasks = (roomKey, callback) => {
-  const gameRef = ref(database, `/activeGames/${roomKey}/tasks`);
+  const gameRef = ref(database, `/activeGames/${roomKey}/taskTitles`);
   onValue(gameRef, (snapshot) => {
     const gameStatus = snapshot.val();
     callback(gameStatus);
