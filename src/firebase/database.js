@@ -1,4 +1,4 @@
-import { getDatabase, ref, set, get, push, child, update, remove } from 'firebase/database';
+import { getDatabase, ref, set, get, push, child, update, remove, onValue } from 'firebase/database';
 import app from './firebaseConfig';
 
 // Get a reference to the Firebase Realtime Database
@@ -73,38 +73,22 @@ export const addPlayer = async (roomKey, playerName, playerID) => {
   }
 }
 
-export const countNumberOfPlayers = async (roomKey) => {
-  const gameRef = ref(database, `/activeGames/${roomKey}`);
-  try {
-    const gameSnapshot = await get(gameRef);
-    if(gameSnapshot.exists()) {
-      const gameData = gameSnapshot.val();
-      const players = gameData.playerIDs;
-      const count = players ? Object.keys(players).length : 0;
-      return count;
-    }
-    return 0;
-  } catch (error) {
-    console.error('Error Fetching Game Snapshot: ', error);
-    throw error;
-  }
-}
+export const countNumberOfPlayers = (roomKey, callback) => {
+  const gameRef = ref(database, `/activeGames/${roomKey}/playerIDs`);
+  onValue(gameRef, (snapshot) => {
+    const playerIDs = snapshot.val();
+    const count = playerIDs ? Object.keys(playerIDs).length : 0;
+    callback(count);
+  });
+};
 
-export const retrieveGameStatus = async (roomKey) => {
-  const gameRef = ref(database, `/activeGames/${roomKey}`);
-  try {
-    const gameSnapshot = await get(gameRef);
-    if(gameSnapshot.exists()) {
-      const gameData = gameSnapshot.val();
-      return gameData.roomStatus;
-    } else {
-      console.error('Game Snapshot do not exist');
-    }
-  } catch (error) {
-    console.error('Error Fetching Game Snapshot: ', error);
-    throw error;
-  }
-}
+export const retrieveGameStatus = (roomKey, callback) => {
+  const gameRef = ref(database, `/activeGames/${roomKey}/roomStatus`);
+  onValue(gameRef, (snapshot) => {
+    const gameStatus = snapshot.val();
+    callback(gameStatus);
+  });
+};
 
 export const updateGameStatus = async (roomKey, status) => {
   try {
@@ -123,6 +107,14 @@ export const updateGameStatus = async (roomKey, status) => {
     throw error;
   }
 }
+
+export const retrieveAllPlayers = (roomKey, callback) => {
+  const gameRef = ref(database, `/activeGames/${roomKey}/playerNames`);
+  onValue(gameRef, (snapshot) => {
+    const gameStatus = snapshot.val();
+    callback(gameStatus);
+  });
+};
 
 export const createPlayer = (playerKey, playerData) => {
   const playerRef = ref(database, `players/${playerKey}`);
