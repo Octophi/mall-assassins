@@ -12,6 +12,7 @@ body {
   }
 
   .task-card {
+    display: flex;
     height: 50vh;
     width: 100vw;
   }
