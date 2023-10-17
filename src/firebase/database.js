@@ -108,6 +108,14 @@ export const updateGameStatus = async (roomKey, status) => {
   }
 }
 
+export const retrieveAllPlayers = (roomKey, callback) => {
+  const gameRef = ref(database, `/activeGames/${roomKey}/playerNames`);
+  onValue(gameRef, (snapshot) => {
+    const gameStatus = snapshot.val();
+    callback(gameStatus);
+  });
+};
+
 export const createPlayer = (playerKey, playerData) => {
   const playerRef = ref(database, `players/${playerKey}`);
   return set(playerRef, playerData);
