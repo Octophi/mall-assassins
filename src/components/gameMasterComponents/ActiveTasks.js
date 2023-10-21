@@ -1,14 +1,7 @@
-import React, { useEffect, useState } from 'react';
 import {
-  Flex,
-  Heading,
-  Button,
-  Text,
-  Stack,
-  Box,
-  Center, 
-  Image
+  Flex, Stack
 } from '@chakra-ui/react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { retrieveAllTasks } from '../../firebase/taskDatabase';
 import TaskCard from './TaskCard';

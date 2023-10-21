@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react';
 import {
+  Box,
+  Button,
+  Center,
   Flex,
   Heading,
-  Button,
-  Text,
+  Image,
   Stack,
-  Box,
-  Center, 
-  Image
+  Text
 } from '@chakra-ui/react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
-import { getGameByRoomKey, retrieveAllPlayers, updateGameStatus } from '../../firebase/database';
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { retrieveAllPlayers, updateGameStatus } from '../../firebase/database';
 
 const HostWaitingRoom = () => {
   const { roomID } = useParams();

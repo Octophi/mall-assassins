@@ -1,13 +1,13 @@
-import { useEffect, useState } from 'react';
 import {
+  Button,
   Flex,
   Heading,
-  Text, 
-  Image, 
-  Button
+  Image,
+  Text
 } from '@chakra-ui/react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { countNumberOfPlayers, retrieveGameStatus, leaveRoom } from '../../firebase/database';
+import { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { countNumberOfPlayers, leaveRoom, retrieveGameStatus } from '../../firebase/database';
 
 const PlayerWaitingPage = () => {
   const { roomID } = useParams();

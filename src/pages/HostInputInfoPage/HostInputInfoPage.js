@@ -1,21 +1,19 @@
 import React, { useState } from 'react';
-import { 
-  Box, 
-  Button, 
-  Flex, 
+import {
+  Box,
+  Button,
+  Flex,
   Heading,
   FormControl,
   FormLabel,
-  Input, 
+  Input,
   Image
- } from '@chakra-ui/react';
-import { Form, useNavigate } from 'react-router-dom';
+} from '@chakra-ui/react';
+import { useNavigate } from 'react-router-dom';
 import { doesGameExist, getGameByRoomKey, updateGame } from '../../firebase/database';
 import { useParams } from 'react-router-dom';
-import { ErrorModal } from '../../components/ErrorModal';
 
 import { v4 as uuidv4 } from 'uuid';
-import { set } from '@firebase/database';
 
 const HostInputInfoPage = () => {
   const { roomID } = useParams();

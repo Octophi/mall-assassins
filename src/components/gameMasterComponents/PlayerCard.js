@@ -1,5 +1,5 @@
+import { Card, Text } from '@chakra-ui/react';
 import React from 'react';
-import { Text, Card } from '@chakra-ui/react';
 
 // Takes in playerObject as JSON object
 // Note the playerObject.playerObject logic is nonsense but it's necessary and I will fix this one day

@@ -1,18 +1,11 @@
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { createTask, addTask } from '../../firebase/taskDatabase'; 
-import { useHistory } from 'react-router-dom';
+import { addTask, createTask } from '../../firebase/taskDatabase';
 
 import {
-    Flex,
-    Heading,
-    Button,
-    Box,
-    Input,
-    Stack,
-    Text, Select
-  } from '@chakra-ui/react';
-  import { Link, useParams } from 'react-router-dom';
+  Button, Input, Select
+} from '@chakra-ui/react';
+import { useParams } from 'react-router-dom';
 
 function CreateTask() {
   const { roomID } = useParams();

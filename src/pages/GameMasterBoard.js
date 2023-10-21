@@ -1,39 +1,20 @@
-import React, { useState } from 'react';
-import CreateTask from '../components/gameMasterComponents/CreateTask';
 import {
+  Box,
+  Button,
+  Divider,
   Flex,
   Heading,
-  Button,
-  Box,
-  Input,
+  Image,
   Stack,
-  Text,
-  Avatar,
-  Spacer,
-  Divider,
-  AvatarGroup,
-  Image
+  Text
 } from '@chakra-ui/react';
-import { Link, useParams } from 'react-router-dom';
-import { ActiveTasks } from '../components/gameMasterComponents/ActiveTasks.js'
+import React from 'react';
+import { ActiveTasks } from '../components/gameMasterComponents/ActiveTasks.js';
+import CreateTask from '../components/gameMasterComponents/CreateTask';
 import PlayerList from '../components/gameMasterComponents/PlayerList';
 
 const GameMasterBoard = () => {
-  const { roomID } = useParams();
-
-  const [alivePlayers, setAlivePlayers] = useState([
-    'Player 1',
-    'Player 2',
-    'Player 3',
-  ]);
-  const [deadPlayers, setDeadPlayers] = useState([]);
-
-  // Function to eliminate a player from the game
-  const eliminatePlayer = (playerName) => {
-    setAlivePlayers(alivePlayers.filter((player) => player !== playerName));
-    setDeadPlayers([...deadPlayers, playerName]);
-  };
-
+  
   return (
     <Flex direction="column" p={5}>
       <Flex justify="space-between" alignItems="center" mb={5}>
@@ -53,8 +34,6 @@ const GameMasterBoard = () => {
             <Box bg="teal.50" p={4} borderRadius="md">
               <Heading size="sm" >Task Bank </Heading>
               <CreateTask />
-              {/* <Button as={Link} to="/tasks" colorScheme="teal" size="sm">Back To Tasks</Button> */}
-              {/* Add task bank UI components here */}
             </Box>
           </Stack>
         </Box>
@@ -65,12 +44,12 @@ const GameMasterBoard = () => {
             <Text fontSize="sm" mt={4}>
               Manage the title and visuals of your top-secret mission.
             </Text>
-            <Flex mt={4}>
+            <Flex mt={4} justify="center">
               <Button colorScheme="red" size="sm" mr={2}>
-                Abort
+                Deny
               </Button>
               <Button colorScheme="green" size="sm">
-                Execute
+                Approve
               </Button>
             </Flex>
           </Box>

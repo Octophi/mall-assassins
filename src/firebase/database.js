@@ -1,4 +1,4 @@
-import { getDatabase, ref, set, get, push, child, update, remove, onValue, updateDoc, query, orderByChild, equalTo } from 'firebase/database';
+import { equalTo, get, getDatabase, onValue, orderByChild, query, ref, remove, set, update } from 'firebase/database';
 import app from './firebaseConfig';
 
 // Get a reference to the Firebase Realtime Database
