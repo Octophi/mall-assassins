@@ -192,17 +192,11 @@ export const leaveRoom = async (roomKey, playerID) => {
 }
 
 
-// Takes in a boolean argument
-export const getPlayersByAliveStatus = async (isAlive) => {
-  // Create a reference to the "players" node
+export const getPlayersByAliveStatus = (isAlive, callback) => {
   const playersRef = ref(database, "players");
-
-  // Create a query to filter players where "isAlive" is true
   const alivePlayersQuery = query(playersRef, orderByChild("isAlive"), equalTo(isAlive));
 
-  try {
-    const snapshot = await get(alivePlayersQuery);
-
+  const listener = onValue(alivePlayersQuery, (snapshot) => {
     if (snapshot.exists()) {
       const alivePlayers = [];
       snapshot.forEach((childSnapshot) => {
@@ -213,12 +207,13 @@ export const getPlayersByAliveStatus = async (isAlive) => {
 
       console.log("Alive players: ", alivePlayers);
 
-      return alivePlayers; // Return the list of alive players
+      callback(alivePlayers); // Call the provided callback with the updated data
     } else {
       console.log(`No ${(isAlive) ? "alive" : "dead" } players found.`);
-      return null; // No players found
+      callback([]); // No players found
     }
-  } catch (error) {
-    throw error;
-  }
+  });
+
+  // You can return the reference to the listener if you want to later remove it
+  return listener;
 }
