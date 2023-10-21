@@ -11,6 +11,7 @@ import {
 } from '@chakra-ui/react';
 import { useParams } from 'react-router-dom';
 import { retrieveAllTasks } from '../../firebase/database';
+import TaskCard from './TaskCard';
 
 export const ActiveTasks = () => {
   const { roomID } = useParams();
@@ -29,11 +30,9 @@ export const ActiveTasks = () => {
   return(
     <Flex>
       <Stack spacing={4} width="100%">
-        <Box>
           {tasks && tasks.map((title, index) => (
-            <Text key={index}>{title}</Text>
+            <TaskCard title={title} index={index} />
           ))}
-        </Box>
       </Stack>
     </Flex>
   )
