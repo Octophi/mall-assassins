@@ -10,7 +10,7 @@ import {
   Image
 } from '@chakra-ui/react';
 import { useParams } from 'react-router-dom';
-import { retrieveAllTasks } from '../../firebase/database';
+import { retrieveAllTasks } from '../../firebase/taskDatabase';
 import TaskCard from './TaskCard';
 
 export const ActiveTasks = () => {

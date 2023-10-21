@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { createTask, addTask } from '../../firebase/database.js'; 
+import { createTask, addTask } from '../../firebase/taskDatabase'; 
 import { useHistory } from 'react-router-dom';
 
 import {
