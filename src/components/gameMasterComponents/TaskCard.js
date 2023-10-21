@@ -8,7 +8,7 @@ import {
 function TaskCard({title, index}) {
 
     return (
-        <Card>
+        <Card p={4} m={4}>
             <Text key={index}>{title}</Text>
         </Card>
     )
